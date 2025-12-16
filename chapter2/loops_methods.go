@@ -44,4 +44,39 @@ func main(){
 	} else {
 		fmt.Println("You need to work hard")
 	}
+
+	GuessNum()
+
+}
+
+
+func GuessNum() {
+
+	seconds := time.Now().Unix()
+	rand.Seed(seconds)
+	rand_num := rand.Intn(100) + 1
+
+	reader := bufio.NewReader(os.Stdin)
+
+	for x := 0; x < 10; x ++ {
+		fmt.Println("current this number of guesses left:", 10-x)
+		fmt.Print("Guess  the number: ")
+		input, err := reader.ReadString('\n')
+		if err != nil {
+			fmt.Println("Error in reading string")
+			return
+		}
+		input = strings.TrimSpace(input)
+		userGuess, err := strconv.Atoi(input)
+		if rand_num < userGuess {
+			fmt.Println("your guess is HIGH")
+			continue
+		} else if rand_num > userGuess {
+			fmt.Println("your guess is LOW")
+			continue
+		} else {
+			fmt.Println("you guessed right", rand_num, userGuess)
+			break
+		}
+	}
 }
