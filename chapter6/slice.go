@@ -1,18 +1,18 @@
 package main
 
 import (
+	"bufio"
 	"fmt"
+	"log"
 	"os"
 	"strconv"
-	"log"
 	"strings"
-	"bufio"
 )
 
 func main() {
 
 	// learn slice
-    sums_slice, err := learn_slice()
+	sums_slice, err := learn_slice()
 	sum := 0.0
 	if err != nil {
 		log.Fatal(err)
@@ -20,7 +20,7 @@ func main() {
 	for _, each_sum := range sums_slice {
 		sum += each_sum
 	}
-	average := sum/float64(len(sums_slice))
+	average := sum / float64(len(sums_slice))
 	fmt.Printf("The average is %0.2f\n", average)
 
 	// for learning args sent to porogram while running
@@ -28,7 +28,7 @@ func main() {
 
 }
 
-func learn_slice() ([]float64, error){
+func learn_slice() ([]float64, error) {
 	var numbers_slice []float64
 	// or simply numbers_slice1 := make([]float64, 45)
 	file, err := os.Open("C:\\Users\\mohan\\Dev1\\GoProject\\chapter5\\file_list")
@@ -55,8 +55,6 @@ func learn_slice() ([]float64, error){
 	return numbers_slice, nil
 
 }
-
-
 
 func args_example() float64 {
 	numbers := os.Args[1:]
